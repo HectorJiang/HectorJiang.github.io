@@ -1,0 +1,925 @@
+
+
+<!DOCTYPE html>
+<html lang="en" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#fff">
+  <meta name="description" content="">
+  <meta name="author" content="Hector Jiang">
+  <meta name="keywords" content="">
+  <meta name="description" content="https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903805482434568#heading-11 https:&#x2F;&#x2F;zhangjia.io&#x2F;852.html 数据库设计流程数据库规范waiting:https:&#x2F;&#x2F;www.kancloud.cn&#x2F;thinkphp&#x2F;mysql-design-optimalize&#x2F;39325 waiting:https:&#x2F;&#x2F;blog.csdn.net&#x2F;wang">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库设计">
+<meta property="og:url" content="http://example.com/2021/10/19/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Hector Jiang">
+<meta property="og:description" content="https:&#x2F;&#x2F;juejin.cn&#x2F;post&#x2F;6844903805482434568#heading-11 https:&#x2F;&#x2F;zhangjia.io&#x2F;852.html 数据库设计流程数据库规范waiting:https:&#x2F;&#x2F;www.kancloud.cn&#x2F;thinkphp&#x2F;mysql-design-optimalize&#x2F;39325 waiting:https:&#x2F;&#x2F;blog.csdn.net&#x2F;wang">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-19T03:36:08.422Z">
+<meta property="article:modified_time" content="2021-10-19T04:12:18.142Z">
+<meta property="article:author" content="Hector Jiang">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>数据库设计 - Hector Jiang</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":false,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 30vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Hector Jiang</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/project/">
+                
+                My Projects
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/cv/">
+                
+                Curriculum Vitae
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                
+                About Me
+              </a>
+            </li>
+          
+        
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('https://api.dujin.org/bing/1920.php') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数据库设计">
+              
+                数据库设计
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-10-19 11:36" pubdate>
+        October 19, 2021 am
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      13k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      41 分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数据库设计</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：an hour ago
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903805482434568#heading-11">https://juejin.cn/post/6844903805482434568#heading-11</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhangjia.io/852.html">https://zhangjia.io/852.html</a></p>
+<h2 id="数据库设计流程"><a href="#数据库设计流程" class="headerlink" title="数据库设计流程"></a>数据库设计流程</h2><h2 id="数据库规范"><a href="#数据库规范" class="headerlink" title="数据库规范"></a>数据库规范</h2><p>waiting:<br><a target="_blank" rel="noopener" href="https://www.kancloud.cn/thinkphp/mysql-design-optimalize/39325">https://www.kancloud.cn/thinkphp/mysql-design-optimalize/39325</a></p>
+<p>waiting:<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/wangkun_j/article/details/113500282">https://blog.csdn.net/wangkun_j/article/details/113500282</a></p>
+<p>waiting:<br><a target="_blank" rel="noopener" href="https://www.yinxiang.com/everhub/note/9be37404-e26b-4140-9f92-f39c763532d2">https://www.yinxiang.com/everhub/note/9be37404-e26b-4140-9f92-f39c763532d2</a></p>
+<p>waiting:<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/eff666/article/details/103619303">https://blog.csdn.net/eff666/article/details/103619303</a></p>
+<p>waiting:<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/110543466">https://zhuanlan.zhihu.com/p/110543466</a></p>
+<p>waiting:<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/107963536">https://zhuanlan.zhihu.com/p/107963536</a></p>
+<p>waiting:<br><a target="_blank" rel="noopener" href="http://blog.zollty.com/b/archive/database-design-spec.html">http://blog.zollty.com/b/archive/database-design-spec.html</a></p>
+<p>waiting:<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xuliuzai/p/13796453.html">https://www.cnblogs.com/xuliuzai/p/13796453.html</a></p>
+<p>waiting:<br><a target="_blank" rel="noopener" href="https://learnku.com/articles/25116">https://learnku.com/articles/25116</a></p>
+<p>waiting:<br><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/709387">https://developer.aliyun.com/article/709387</a></p>
+<p>waiting:<br><a target="_blank" rel="noopener" href="https://gorm.io/zh_CN/docs/">https://gorm.io/zh_CN/docs/</a></p>
+<p>参考:</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/lijinzhou2017/article/details/108533932#:~:text=1.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83%3A%20(1)%E8%A1%A8%E5%90%8D%E5%89%8D,%E5%8D%95%E8%AF%8D%E7%9A%84%E5%8D%95%E6%95%B0%E5%BD%A2">https://blog.csdn.net/lijinzhou2017/article/details/108533932#:~:text=1.%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83%3A%20(1)%E8%A1%A8%E5%90%8D%E5%89%8D,%E5%8D%95%E8%AF%8D%E7%9A%84%E5%8D%95%E6%95%B0%E5%BD%A2</a>…</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0e9dfaa3c6e5">https://www.jianshu.com/p/0e9dfaa3c6e5</a></p>
+<p><a target="_blank" rel="noopener" href="https://gumutianqi1.gitbooks.io/specification-doc/content/specification-doc/database-design.html">https://gumutianqi1.gitbooks.io/specification-doc/content/specification-doc/database-design.html</a></p>
+<h2 id="数据库环境"><a href="#数据库环境" class="headerlink" title="数据库环境"></a>数据库环境</h2><ul>
+<li>dev：开发环境，开发可读写，可修改表结构。开发人员可以修改表结构，可以随意修改其中的数据但是需要保证不影响其他开发同事。</li>
+<li>qa：测试环境，开发可读写，开发人员可以通过工具修改表结构。</li>
+<li>sim：模拟环境，开发可读写，发起上线请求时，会先在这个环境上进行预执行，这个环境也可供部署上线演练或压力测试使用。</li>
+<li>real：生产数据库从库（准实时同步），只读环境，不允许修改数据，不允许修改表结构，供线上问题查找，数据查询等使用。</li>
+<li>online：线上环境，开发人员不允许直接在线上环境进行数据库操作，如果需要操作必须找DBA进行操作并进行相应记录，禁止进行压力测试。</li>
+</ul>
+<p>这些环境的机器，一定要做到权限划分明确，读写帐号分离，并且有辨识度，能区分具体业务。例如用户名w_account，r_ account 分别代表读、写账号，account是读写账号。</p>
+<h2 id="命名规范"><a href="#命名规范" class="headerlink" title="命名规范"></a>命名规范</h2><p><strong>基本命名原则</strong></p>
+<ul>
+<li>使用有意义的英文词汇，词汇中间以下划线分隔。（不要用拼音）</li>
+<li>只能使用英文字母，数字，下划线，并以英文字母开头。</li>
+<li>库、表、字段全部采用小写，不要使用驼峰式命名。</li>
+<li>避免用ORACLE、MySQL的保留字，如desc，关键字如index。</li>
+<li>命名禁止超过32个字符，须见名之意，建议使用名词不是动词</li>
+<li>数据库，数据表一律使用前缀<ul>
+<li>临时库、表名必须以tmp为前缀，并以日期为后缀</li>
+<li>备份库、表必须以bak为前缀，并以日期为后缀</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><strong>为什么库、表、字段全部采用小写？</strong></p>
+<p>在 MySQL 中，数据库和表对就于那些目录下的目录和文件。因而，操作系统的敏感性决定数据库和表命名的大小写敏感。</p>
+<ul>
+<li>Windows下是不区分大小写的。</li>
+<li>Linux下大小写规则：<ul>
+<li>数据库名与表名是严格区分大小写的；</li>
+<li>表的别名是严格区分大小写的；</li>
+<li>列名与列的别名在所有的情况下均是忽略大小写的；</li>
+<li>变量名也是严格区分大小写的；</li>
+</ul>
+</li>
+</ul>
+<p>如果已经设置了驼峰式的命名如何解决？需要在MySQL的配置文件my.ini中增加 lower_case_table_names = 1即可。</p>
+</blockquote>
+<p><strong>表命名</strong></p>
+<ul>
+<li>同一个模块的表尽可能使用相同的前缀，表名称尽可能表达含义。所有日志表均以 log_ 开头</li>
+</ul>
+<p><strong>字段命名</strong></p>
+<ul>
+<li>表达其实际含义的英文单词或简写。布尔意义的字段以“is_”作为前缀，后接动词过去分词。</li>
+<li>各表之间相同意义的字段应同名。各表之间相同意义的字段，以去掉模块前缀的表名_字段名命名。</li>
+<li>外键字段用表名_字段名表示其关联关系。</li>
+<li>表的主键一般都约定成为id，自增类型，是别的表的外键均使用xxx_id的方式来表明。</li>
+</ul>
+<p><strong>索引命名</strong></p>
+<ul>
+<li>非唯一索引必须按照“idx_字段名称_字段名称[_字段名]”进行命名</li>
+<li>唯一索引必须按照“uniq_字段名称_字段名称[_字段名]”进行命名</li>
+</ul>
+<p><strong>约束命名</strong></p>
+<ul>
+<li>主键约束：pk_表名称。</li>
+<li>唯一约束：uk_表名称_字段名。（应用中需要同时有唯一性检查逻辑。）</li>
+</ul>
+<p><strong>触发器命名</strong></p>
+<ul>
+<li>trg_表名_操作。</li>
+</ul>
+<p><strong>函数过程命名</strong></p>
+<ul>
+<li>采用动词+名词的形式表达其含义。</li>
+</ul>
+<p><strong>序列命名</strong></p>
+<ul>
+<li>seq_表名</li>
+</ul>
+<h2 id="表设计规范"><a href="#表设计规范" class="headerlink" title="表设计规范"></a>表设计规范</h2><p>1、表引擎取决于实际应用场景；日志及报表类表建议用myisam，与交易，审核，金额相关的表建议用innodb引擎。如无说明，建表时一律采用innodb引擎。<a target="_blank" rel="noopener" href="https://www.biaodianfu.com/mysql-myisam-innodb.html">myisam与innodb的区别</a></p>
+<p>2、默认使用utf8mb4字符集，数据库排序规则使用utf8mb4_general_ci，（由于数据库定义使用了默认，数据表可以不再定义，但为保险起见，建议都写上）。</p>
+<blockquote>
+<p><strong>为什么字符集不选择utf8，排序规则不使用utf8_general_ci？</strong></p>
+<p>采用utf8编码的MySQL无法保存占位是4个字节的Emoji表情。为了使后端的项目，全面支持客户端输入的Emoji表情，升级编码为utf8mb4是最佳解决方案。对于JDBC连接串设置了characterEncoding为utf8或者做了上述配置仍旧无法正常插入emoji数据的情况，需要在代码中指定连接的字符集为utf8mb4。</p>
+</blockquote>
+<p>3、所有表、字段均应用 comment 列属性来描述此表、字段所代表的真正含义，如枚举值则建议将该字段中使用的内容都定义出来。</p>
+<p>4、如无说明，表中的第一个id字段一定是主键且为自动增长，禁止在非事务内作为上下文作为条件进行数据传递。禁止使用varchar类型作为主键语句设计。</p>
+<p>5、如无说明，表必须包含create_time和modify_time字段，即表必须包含记录创建时间和修改时间的字段</p>
+<p>6、如无说明，表必须包含is_del，用来标示数据是否被删除，原则上数据库数据不允许物理删除。</p>
+<p>7、用尽量少的存储空间来存数一个字段的数据</p>
+<ul>
+<li>能用int的就不用char或者varchar</li>
+<li>能用tinyint的就不用int</li>
+<li>使用UNSIGNED存储非负数值。</li>
+<li>不建议使用ENUM、SET类型，使用TINYINT来代替</li>
+<li>使用短数据类型，比如取值范围为0-80时，使用TINYINT UNSIGNED</li>
+<li>存储精确浮点数必须使用DECIMAL替代FLOAT和DOUBLE</li>
+<li>时间字段，除特殊情况一律采用int来记录unix_timestamp<ul>
+<li>存储年使用YEAR类型。</li>
+<li>存储日期使用DATE类型。</li>
+<li>存储时间（精确到秒）建议使用TIMESTAMP类型，因为TIMESTAMP使用4字节，DATETIME使用8个字节。</li>
+</ul>
+</li>
+<li>建议使用INT UNSIGNED存储IPV4。</li>
+<li>尽可能不使用TEXT、BLOB类型</li>
+<li>禁止在数据库中使用VARBINARY、BLOB存储图片、文件等。建议使用其他方式存储（TFS/SFS），MySQL只保存指针信息。</li>
+<li>单条记录大小禁止超过8k（列长度(中文)*3(UTF8)+列长度(英文)*1）</li>
+</ul>
+<blockquote>
+<p><strong>datetime与timestamp有什么不同？</strong></p>
+<p>相同点：TIMESTAMP列的显示格式与DATETIME列相同。显示宽度固定在19字符，并且格式为YYYY-MM-DD HH:MM:SS。<br>不同点：</p>
+<ul>
+<li>TIMESTAMP<ul>
+<li>4个字节储存，时间范围：1970-01-01 08:00:01 ~ 2038-01-19 11:14:07</li>
+<li>值以UTC格式保存，涉及时区转化 ，存储时对当前的时区进行转换，检索时再转换回当前的时区。</li>
+</ul>
+</li>
+<li>datetime<ul>
+<li>8个字节储存，时间范围：1000-01-01 00:00:00 ~ 9999-12-31 23:59:59</li>
+<li>实际格式储存，与时区无关</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>如何使用TIMESTAMP的自动赋值属性？</strong></p>
+<ul>
+<li>将当前时间作为ts的默认值：ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP。</li>
+<li>当行更新时，更新ts的值：ts TIMESTAMP DEFAULT  ON UPDATE CURRENT_TIMESTAMP。</li>
+<li>可以将1和2结合起来：ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>如何使用INT UNSIGNED存储ip？</strong></p>
+<p>使用INT UNSIGNED而不是char(15)来存储ipv4地址，通过MySQL函数inet_ntoa和inet_aton来进行转化。Ipv6地址目前没有转化函数，需要使用DECIMAL或者两个bigINT来存储。</p>
+</blockquote>
+<p>8、如无备注，所有字段都设置NOT NULL，并设置默认值；</p>
+<p>9、禁止在数据库中存储明文密码</p>
+<p>10、如无备注，所有的布尔值字段，如is_hot、is_deleted，都必须设置一个默认值，并设为0；</p>
+<p>11、如无备注，排序字段order_id在程序中默认使用降序排列；</p>
+<p>12、整形定义中不添加长度，比如使用INT，而不是INT[4]</p>
+<blockquote>
+<p>**INT[M]**<strong>，M值代表什么含义？</strong></p>
+<p>注意数值类型括号后面的数字只是表示宽度而跟存储范围没有关系。很多人他们认为INT(4)和INT(10)其取值范围分别是 (-9999到9999)和(-9999999999到9999999999)，这种理解是错误的。其实对整型中的 M值与 ZEROFILL 属性结合使用时可以实现列值等宽。不管INT[M]中M值是多少，其取值范围还是 (-2147483648到2147483647 有符号时)，(0到4294967295无符号时)。</p>
+<p>显示宽度并不限制可以在列内保存的值的范围，也不限制超过列的指定宽度的值的显示。当结合可选扩展属性ZEROFILL使用时默认补充的空格用零代替。例如：对于声明为INT(5) ZEROFILL的列，值4检索为00004。请注意如果在整数列保存超过显示宽度的一个值，当MySQL为复杂联接生成临时表时会遇到问题，因为在这些情况下MySQL相信数据适合原列宽度，如果为一个数值列指定ZEROFILL, MySQL自动为该列添加UNSIGNED属性。</p>
+</blockquote>
+<p>13、使用VARBINARY存储大小写敏感的变长字符串</p>
+<blockquote>
+<p><strong>什么时候用CHAR，什么时候用VARCHAR？</strong></p>
+<p>CHAR和VARCHAR类型类似，但它们保存和检索的方式不同。它们的最大长度和是否尾部空格被保留等方面也不同。CHAR和VARCHAR类型声明的长度表示你想要保存的最大字符数。例如，CHAR(30)可以占用30个字符。</p>
+<ul>
+<li>CHAR列的长度固定为创建表时声明的长度。长度可以为从0到255的任何值。当保存CHAR值时，在它们的右边填充空格以达到指定的长度。当检索到CHAR值时，尾部的空格被删除掉。在存储或检索过程中不进行大小写转换。</li>
+<li>VARCHAR列中的值为可变长字符串。长度可以指定为0到65,535之间的值。(VARCHAR的最大有效长度由最大行大小和使用的字符集确定。整体最大长度是65,532字节）。</li>
+</ul>
+<p>同CHAR对比，VARCHAR值保存时只保存需要的字符数，另加一个字节来记录长度(如果列声明的长度超过255，则使用两个字节)。VARCHAR值保存时不进行填充。当值保存和检索时尾部的空格仍保留，符合标准SQL。</p>
+<p>char适合存储用户密码的MD5哈希值，它的长度总是一样的。对于经常改变的值，char也好于varchar,因为固定长度的行不容易产生碎片，对于很短的列，char的效率也高于varchar。char(1)字符串对于单字节字符集只会占用一个字节，但是varchar(1)则会占用2个字节，因为1个字节用来存储长度信息。</p>
+</blockquote>
+<h2 id="索引设计规范"><a href="#索引设计规范" class="headerlink" title="索引设计规范"></a>索引设计规范</h2><p>MySQL的查询速度依赖良好的索引设计，因此索引对于高性能至关重要。合理的索引会加快查询速度（包括UPDATE和DELETE的速度，MySQL会将包含该行的page加载到内存中，然后进行UPDATE或者DELETE操作），不合理的索引会降低速度。MySQL索引查找类似于新华字典的拼音和部首查找，当拼音和部首索引不存在时，只能通过一页一页的翻页来查找。当MySQL查询不能使用索引时，MySQL会进行全表扫描，会消耗大量的IO。索引的用途：去重、加速定位、避免排序、覆盖索引。</p>
+<blockquote>
+<p><strong>什么是覆盖索引？</strong></p>
+<p>InnoDB存储引擎中，secondary index（非主键索引）中没有直接存储行地址，存储主键值。如果用户需要查询secondary index中所不包含的数据列时，需要先通过secondary index查找到主键值，然后再通过主键查询到其他数据列，因此需要查询两次。覆盖索引的概念就是查询可以通过在一个索引中完成，覆盖索引效率会比较高，主键查询是天然的覆盖索引。合理的创建索引以及合理的使用查询语句，当使用到覆盖索引时可以获得性能提升。比如SELECT email,uid FROM user_email WHERE uid=xx，如果uid不是主键，适当时候可以将索引添加为index(uid,email)，以获得性能提升。</p>
+</blockquote>
+<p><strong>索引的基本规范</strong></p>
+<p>1、索引数量控制，单张表中索引数量不超过5个，单个索引中的字段数不超过5个。</p>
+<ul>
+<li>综合评估数据密度和分布</li>
+<li>考虑查询和更新比例</li>
+</ul>
+<blockquote>
+<p><strong>为什么一张表中不能存在过多的索引？</strong></p>
+<p>InnoDB的secondary index使用b+tree来存储，因此在UPDATE、DELETE、INSERT的时候需要对b+tree进行调整，过多的索引会减慢更新的速度。</p>
+</blockquote>
+<p>2、对字符串使用前缀索引，前缀索引长度不超过8个字符，建议优先考虑前缀索引，必要时可添加伪列并建立索引。</p>
+<ul>
+<li>不要索引blob/text等字段,不要索引大型字段,这样做会让索引占用太多的存储空间</li>
+</ul>
+<blockquote>
+<p><strong>什么是前缀索引？</strong></p>
+<p>前缀索引说白了就是对文本的前几个字符（具体是几个字符在建立索引时指定）建立索引，这样建立起来的索引更小，所以查询更快。 前缀索引能有效减小索引文件的大小，提高索引的速度。但是前缀索引也有它的坏处：MySQL 不能在 ORDER BY 或 GROUP BY 中使用前缀索引，也不能把它们用作覆盖索引(Covering Index)。</p>
+<p>建立前缀索引的语法：ALTER TABLE table_name ADD KEY(column_name(prefix_length));</p>
+</blockquote>
+<p>3、主键准则</p>
+<ul>
+<li>表必须有主键</li>
+<li>不使用更新频繁的列</li>
+<li>尽量不选择字符串列</li>
+<li>不使用UUID MD5 HASH</li>
+<li>默认使用非空的唯一键</li>
+<li>建议选择自增或发号器</li>
+</ul>
+<p>4、 重要的SQL必须被索引，核心SQL优先考虑覆盖索索引</p>
+<ul>
+<li>UPDATE、DELETE语句的WHERE条件列</li>
+<li>ORDER BY、GROUP BY、DISTINCT的字段</li>
+<li>多表JOIN的字段</li>
+</ul>
+<p>5、区分度最大的字段放在前面</p>
+<ul>
+<li>选择筛选性更优的字段放在最前面，比如单号、userid等，type，status等筛选性一般不建议放在最前面</li>
+<li>索引根据左前缀原则，当建立一个联合索引(a,b,c)，则查询条件里面只有包含(a)或(a,b)或(a,b,c)的时候才能走索引,(a,c)作为条件的时候只能使用到a列索引,所以这个时候要确定a的返回列一定不能太多，不然语句设计就不合理,(b,c)则不能走索引</li>
+<li>合理创建联合索引（避免冗余），(a,b,c) 相当于 (a) 、(a,b) 、(a,b,c)</li>
+</ul>
+<p>6、索引禁忌</p>
+<ul>
+<li>不在低基数列上建立索引，例如“性别”</li>
+<li>不在索引列进行数学运算和函数运算</li>
+<li>不要索引常用的小型表</li>
+</ul>
+<p>7、 尽量不使用外键</p>
+<ul>
+<li>外键用来保护参照完整性，可在业务端实现</li>
+<li>对父表和子表的操作会相互影响，降低可用性</li>
+<li>INNODB本身对online DDL的限制</li>
+</ul>
+<p><strong>MYSQL 中索引的限制</strong></p>
+<ul>
+<li>MYISAM 存储引擎索引长度的总和不能超过 1000 字节</li>
+<li>BLOB 和 TEXT 类型的列只能创建前缀索引</li>
+<li>MYSQL 目前不支持函数索引</li>
+<li>使用不等于 (!= 或者 &lt;&gt;) 的时候, MYSQL 无法使用索引。</li>
+<li>过滤字段使用函数运算 (如 abs (column)) 后, MYSQL无法使用索引。</li>
+<li>join语句中join条件字段类型不一致的时候MYSQL无法使用索引</li>
+<li>使用 LIKE 操作的时候如果条件以通配符开始 (如 ‘%abc…’)时, MYSQL无法使用索引。</li>
+<li>使用非等值查询的时候, MYSQL 无法使用 Hash 索引。</li>
+</ul>
+<h2 id="语句设计规范"><a href="#语句设计规范" class="headerlink" title="语句设计规范"></a>语句设计规范</h2><p>1、使用预编译语句</p>
+<ul>
+<li>只传参数，比传递SQL语句更高效</li>
+<li>一次解析，多次使用</li>
+<li>降低SQL注入概率</li>
+</ul>
+<p>2、避免隐式转换</p>
+<ul>
+<li>会导致索引失效</li>
+</ul>
+<p>3、充分利用前缀索引</p>
+<ul>
+<li>必须是最左前缀</li>
+<li>不可能同时用到两个范围条件</li>
+<li>不使用%前导的查询，如like “%ab”</li>
+</ul>
+<p>4、不使用负向查询，如not in/like</p>
+<ul>
+<li>无法使用索引，导致全表扫描</li>
+<li>全表扫描导致buffer pool利用率降低</li>
+</ul>
+<p>5、避免使用存储过程、触发器、UDF、events等</p>
+<ul>
+<li>让数据库做最擅长的事</li>
+<li>降低业务耦合度，为sacle out、sharding留有余地</li>
+<li>避开BUG</li>
+</ul>
+<p>6、避免使用大表的JOIN</p>
+<ul>
+<li>MySQL最擅长的是单表的主键/二级索引查询</li>
+<li>JOIN消耗较多内存，产生临时表</li>
+</ul>
+<p>7、避免在数据库中进行数学运算</p>
+<ul>
+<li>MySQL不擅长数学运算和逻辑判断</li>
+<li>无法使用索引</li>
+</ul>
+<p>7、减少与数据库的交互次数</p>
+<ul>
+<li>INSERT … ON DUPLICATE KEY UPDATE</li>
+<li>REPLACE INTO、INSERT IGNORE 、INSERT INTO VALUES(),(),()</li>
+<li>UPDATE … WHERE ID IN(10,20,50,…)</li>
+</ul>
+<p>8、合理的使用分页</p>
+<ul>
+<li>限制分页展示的页数</li>
+<li>只能点击上一页、下一页</li>
+<li>采用延迟关联</li>
+</ul>
+<blockquote>
+<p><strong>如何正确的使用分页？</strong></p>
+<p>假如有类似下面分页语句：SELECT * FROM table  ORDER BY id LIMIT 10000, 10</p>
+<p>由于MySQL里对LIMIT OFFSET的处理方式是取出OFFSET+LIMIT的所有数据，然后去掉OFFSET，返回底部的LIMIT。所以，在OFFSET数值较大时，MySQL的查询性能会非常低。可以使用id &gt; n 的方式进行解决：</p>
+<p>使用id &gt; n 的方式有局限性，对于id不连续的问题，可以通过翻页的时候同时传入最后一个id方式来解决。</p>
+<p>//输出时，找出当前结果集中的最大最小id</p>
+<p>//下一页</p>
+<p><a href="http://example.com/page.php?last=100">http://example.com/page.php?last=100</a></p>
+<p><strong>select</strong> * <strong>from</strong> <strong>table</strong> <strong>where</strong> id&lt;100 <strong>order by</strong> id <strong>desc</strong> limit 10</p>
+<p>//上一页</p>
+<p><a href="http://example.com/page.php?first=110">http://example.com/page.php?first=110</a></p>
+<p><strong>select</strong> * <strong>from</strong> <strong>table</strong> <strong>where</strong> id&gt;110 <strong>order by</strong> id <strong>desc</strong> limit 10</p>
+<p>这种方式比较大的缺点是，如果在浏览中有插入/删除操作，翻页不会更新，而总页数可能仍然是根据新的count(*) 来计算，最终可能会产生某些记录访问不到。为了修补这个问题，可以继续引入当前页码以及在上次翻页以后是否有插入/删除等影响总记录数的操作并进行缓存</p>
+<p>其他变种方式：</p>
+<p><strong>SELECT</strong> * <strong>FROM</strong> <strong>table</strong> <strong>WHERE</strong> id &gt;= (<strong>SELECT</strong> id <strong>FROM</strong> <strong>table</strong> <strong>ORDER BY</strong> id <strong>LIMIT</strong> #offset#, 1)</p>
+</blockquote>
+<p>9、拒绝大SQL，拆分成小SQL</p>
+<ul>
+<li>充分利用QUERY CACHE</li>
+<li>充分利用多核CPU</li>
+</ul>
+<p>10、使用in代替or，in的值不超过1000个</p>
+<p>11、禁止使用order by rand()</p>
+<p>12、使用EXPLAIN诊断，避免生成临时表</p>
+<blockquote>
+<p>EXPLAIN语句（在MySQL客户端中执行）可以获得MySQL如何执行SELECT语句的信息。通过对SELECT语句执行EXPLAIN，可以知晓MySQL执行该SELECT语句时是否使用了索引、全表扫描、临时表、排序等信息。尽量避免MySQL进行全表扫描、使用临时表、排序等。详见官方文档。</p>
+</blockquote>
+<p>13、用union all而不是union</p>
+<blockquote>
+<p><strong>union all与 union有什么区别？</strong></p>
+<p>union和union all关键字都是将两个结果集合并为一个，但这两者从使用和效率上来说都有所不同。</p>
+<p>union在进行表链接后会筛选掉重复的记录，所以在表链接后会对所产生的结果集进行排序运算，删除重复的记录再返回结果。如：</p>
+<p><strong>select</strong> * <strong>from</strong> test_union1 </p>
+<p><strong>union</strong> </p>
+<p><strong>select</strong> * <strong>from</strong> test_union2</p>
+<p>这个SQL在运行时先取出两个表的结果，再用排序空间进行排序删除重复的记录，最后返回结果集，如果表数据量大的话可能会导致用磁盘进行排序。</p>
+<p>而union all只是简单的将两个结果合并后就返回。这样，如果返回的两个结果集中有重复的数据，那么返回的结果集就会包含重复的数据了。</p>
+<p>从效率上说，union all要比union快很多，所以，如果可以确认合并的两个结果集中不包含重复的数据的话，那么就使用union all，如下：</p>
+<p><strong>select</strong> * <strong>from</strong> test_union1</p>
+<p><strong>union</strong> all</p>
+<p><strong>select</strong> * <strong>from</strong> test_union2</p>
+</blockquote>
+<p>14、程序应有捕获SQL异常的处理机制</p>
+<p>15、禁止单条SQL语句同时更新多个表</p>
+<p>16、不使用select * ，SELECT语句只获取需要的字段</p>
+<ul>
+<li>消耗CPU和IO、消耗网络带宽</li>
+<li>无法使用覆盖索引</li>
+<li>减少表结构变更带来的影响</li>
+<li>因为大，select/join 可能生成临时表</li>
+</ul>
+<p>17、UPDATE、DELETE语句不使用LIMIT</p>
+<p>18、INSERT语句必须显式的指明字段名称，不使用INSERT INTO table()</p>
+<p>19、INSERT语句使用batch提交（INSERT INTO table VALUES(),(),()……），values的个数不超过500</p>
+<p>20、统计表中记录数时使用COUNT(*)，而不是COUNT(primary_key)和COUNT(1) 备注：仅针对Myisam</p>
+<p>21、数据更新建议使用二级索引先查询出主键，再根据主键进行数据更新</p>
+<p>22、禁止使用跨库查询</p>
+<p>23、禁止使用子查询，建议将子查询转换成关联查询</p>
+<p>24、针对varchar类型字段的程序处理，请验证用户输入，不要超出其预设的长度；</p>
+<h2 id="分表规范"><a href="#分表规范" class="headerlink" title="分表规范"></a>分表规范</h2><p>单表一到两年内数据量超过500w或数据容量超过10G考虑分表，需提前考虑历史数据迁移或应用自行删除历史数据，采用等量均衡分表或根据业务规则分表均可。要分表的数据表必须与DBA商量分表策略</p>
+<ul>
+<li>用HASH进行散表，表名后缀使用十进制数，下标从0开始</li>
+<li>按日期时间分表需符合YYYY[MM][DD][HH]格式</li>
+<li>采用合适的分库分表策略。例如千库十表、十库百表等</li>
+<li>禁止使用分区表，分区表对分区键有严格要，分区表在表变大后执行DDL、SHARDING、单表恢复等都变得更加困难。</li>
+<li>拆分大字段和访问频率低的字段，分离冷热数据</li>
+</ul>
+<h2 id="行为规范"><a href="#行为规范" class="headerlink" title="行为规范"></a>行为规范</h2><ul>
+<li>批量导入、导出数据必须提前通知DBA协助观察</li>
+<li>禁止在线上从库执行后台管理和统计类查询</li>
+<li>禁止有super权限的应用程序账号存在</li>
+<li>产品出现非数据库导致的故障时及时通知DBA协助排查</li>
+<li>推广活动或上线新功能必须提前通知DBA进行流量评估</li>
+<li>数据库数据丢失，及时联系DBA进行恢复</li>
+<li>对单表的多次alter操作必须合并为一次操作</li>
+<li>不在MySQL数据库中存放业务逻辑</li>
+<li>重大项目的数据库方案选型和设计必须提前通知DBA参与</li>
+<li>对特别重要的库表，提前与DBA沟通确定维护和备份优先级</li>
+<li>不在业务高峰期批量更新、查询数据库其他规范</li>
+<li>提交线上建表改表需求，必须详细注明所有相关SQL语句</li>
+</ul>
+<h2 id="其他规范"><a href="#其他规范" class="headerlink" title="其他规范"></a>其他规范</h2><p>日志类数据不建议存储在MySQL上，优先考虑Hbase或OceanBase，如需要存储请找DBA评估使用压缩表存储。</p>
+<h2 id="数据状态字段"><a href="#数据状态字段" class="headerlink" title="数据状态字段"></a>数据状态字段</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/daoqidelv/p/7384648.html">https://www.cnblogs.com/daoqidelv/p/7384648.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34248487/article/details/91448855?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">https://blog.csdn.net/weixin_34248487/article/details/91448855?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control</a></p>
+<h2 id="标签数据库设计"><a href="#标签数据库设计" class="headerlink" title="标签数据库设计"></a>标签数据库设计</h2><p>目前主流的博客系统、CMS都会有一个TAG标签系统，不仅可以让内容链接的结构化增强，而且可以让文章根据Tag来区分。相比传统老式的Keyword模式，这种Tag模式可以单独的设计一个Map的映射表来增加系统的负载和查询的效率。</p>
+<h3 id="数据库设计方案1"><a href="#数据库设计方案1" class="headerlink" title="数据库设计方案1"></a><strong>数据库设计方案1</strong></h3><p>此方案分为2个表：</p>
+<p>1.Tag表<br>2.文章表</p>
+<p>Tag表表结构：</p>
+<p>代码如下:</p>
+<p>tagid # tag标签的ID<br>tagname #tag内容<br>num #当前Tag的引用个数</p>
+<p>文章表结构：</p>
+<p>代码如下:</p>
+<p>ID #文章ID<br>title #文章标题<br>tags #tags列表，多个以,分割<br>tagid #tags的ID 多个以,分割<br>…</p>
+<p>此种方式Tag标签主要内容保存在 文章表 中，对于Tag表的压力较小，只是添加的时候更新一下Tag的引用数量，但是查询的时候效率不足，不是好办法</p>
+<h3 id="数据库设计方案2"><a href="#数据库设计方案2" class="headerlink" title="数据库设计方案2"></a><strong>数据库设计方案2</strong></h3><p>第二种方案使用2个Tag表，其中一个保存Tag信息，另一个保存映射信息：</p>
+<p>Tag表：</p>
+<p>代码如下:</p>
+<p>tagid # tag标签的ID<br>tagname #tag内容<br>num #当前Tag的引用个数</p>
+<p>Tagmap表</p>
+<p>代码如下:</p>
+<p>tagid<br>aid</p>
+<p>文章表</p>
+<p>代码如下:</p>
+<p>ID #文章ID<br>title #文章标题<br>tags #tags列表，多个以,分割<br>…</p>
+<p>这种形式，每次发布内容和修改内容的时候 都去更新一下Tag表和 Tagmap表。</p>
+<p>查询的时候需要从Tagmap表中查找响应的文章ID，然后使用文章ID去查询具体的文章信息，因为每次查询都是使用索引，所以效率较高。</p>
+<h3 id="数据库设计方案3"><a href="#数据库设计方案3" class="headerlink" title="数据库设计方案3"></a><strong>数据库设计方案3</strong></h3><p>前两种方案都是使用纯粹的Mysql来设计的，第三种方案将使用Nosql的魅力来设计。</p>
+<p>基本结构同方案2，只是在Tag表和Tagmap表中使用mongo/redis这样的nosql数据库服务器，这样可以发挥nosql数据库强大的线性查询能力。</p>
+<p>1） 第一种方式的表结构设计与方案2完全相同，只是数据库服务器换了。</p>
+<p>2）其他的方案，当然是发挥Nosql的线性能力来设计存储的Key了，尤其是使用redis的时候，使用的Key的结构可以完美的提高查询效率</p>
+<h2 id="数据库选型"><a href="#数据库选型" class="headerlink" title="数据库选型"></a>数据库选型</h2><h3 id="强调事务"><a href="#强调事务" class="headerlink" title="强调事务"></a>强调事务</h3><p>首先谈谈应用最广泛的关系型数据库，关系型数据最大的特点便是事务，它能保证数据始终如一的一致性，这里就不得不提及一下事务的ACID特性：</p>
+<p><strong>原子性：</strong>事务是一个不可再分割的工作单元，事务中的操作要么都发生，要么都不发生，不存在只执行了其中某一个或者某几个步骤。</p>
+<p><strong>一致性：</strong>事务执行后，数据库状态与其业务规则保持一致。如转账业务，无论事务执行成功与否，参与转账的两个账号余额之和应该是不变的。</p>
+<p><strong>隔离性：</strong>多个事务并发访问时，事务之间是隔离的，一个事务不应该影响其它事务运行效果。</p>
+<p><strong>持久性：</strong>在事务完成以后，该事务对数据库所作的更改便持久的保存在数据库之中，不会因为异常、宕机而造成数据错误或丢失。</p>
+<p>另外，通用的SQL语言使得操作关系型数据库非常方便，支持join等复杂查询。</p>
+<p>根据它的特点，关系数据库的适用场景通常可以分为OLTP和 OLAP。</p>
+<p>其中，联机事务处理（OLTP）存储/查询业务应用中活动的数据，以支撑日常的业务活动，是每个企业不可或缺的生产交易系统。这类型应用数据量普遍不大，强调实时、快速响应、数据强一致性，比如银行存取钱，购物消费。</p>
+<p>联机分析处理（OLAP）存储历史数据以支撑复杂的分析操作，侧重于决策支持，这类应用数据量大，高并行、低并发，可用性要求不高，比如客服系统，销售系统等。</p>
+<p>以MySQL为例，这是当前最流行的开源关系型数据库，也是OLTP场景的首选数据库。</p>
+<h3 id="高并发读写"><a href="#高并发读写" class="headerlink" title="高并发读写"></a>高并发读写</h3><p>关系型数据库虽好，但在很多方面也有些力不从心。比如面对高并发读写需求时，多表的关联查询、复杂的数据分析类型，为了保证ACID特性而牺牲的性能问题就凸显出来了。</p>
+<p>这种时候，就是非关系型数据库的天下了。</p>
+<p>NoSQL不再将数据的一致性作为重点，它针对特定场景，以高性能和使用便利为目的。目前，应用比较广泛的非关系型数据库有以下几种：文档数据库、key-value数据库、列存储数据库、时序数据库和图数据库。</p>
+<h3 id="文档数据库："><a href="#文档数据库：" class="headerlink" title="文档数据库："></a>文档数据库：</h3><p>文档数据库会将数据以文档的形式储存。每个文档都是自包含的数据单元，是一系列数据项的集合。每个数据项都有一个名称与对应的值，值既可以是简单的数据类型，如字符串、数字和日期等；也可以是复杂的类型，如有序列表和关联对象。数据存储的最小单位是文档，同一个表中存储的文档属性可以是不同的，数据可以使用XML、JSON或者JSONB等多种形式存储。</p>
+<p>代表产品：MongoDB、CouchDB、RavenDB</p>
+<p>适用场景：</p>
+<ol>
+<li><p>日志：企业环境下，每个应用程序都有不同的日志信息。文档数据库并没有固定的模式，我们可以使用它储存不同的信息。</p>
+</li>
+<li><p>分析：因为它的弱模式结构，所以不改变模式下就可以储存不同的度量方法以及添加新的度量。</p>
+</li>
+</ol>
+<p>备注：以MongDB为例，其使用场景很大程度上可以对标关系型数据库，但是比较适合处理那些没有join、没有强一致性要求且表Schema会常变化的数据。</p>
+<h3 id="键值数据库："><a href="#键值数据库：" class="headerlink" title="键值数据库："></a>键值数据库：</h3><p>键值数据库就像在传统语言中使用的哈希表。可以通过key来添加、查询或者删除数据，鉴于使用主键访问，所以会获得不错的性能及扩展性。它的优势在于简单、易部署、高并发。</p>
+<p>主流代表产品：Riak、Redis、Memcached</p>
+<p>适用场景：储存用户信息，比如会话、配置文件、参数、购物车等等，具体包括游戏场景中的角色信息、经验道具信息、好友排名，电商场景中的海量商品展示信息、购物评论信息等，这些信息一般都和 ID（键）挂钩，所以键值数据库是个很好的选择。</p>
+<h3 id="列存储数据库："><a href="#列存储数据库：" class="headerlink" title="列存储数据库："></a>列存储数据库：</h3><p>列存储数据库将数据储存在列族中，一个列族存储经常被一起查询的相关数据。举个例子，如果有一个Person类，我们通常会一起查询他们的姓名和年龄而不是薪资。这种情况下，姓名和年龄就会被放入一个列族中，而薪资则在另一个列族中。</p>
+<p>代表产品：Cassandra、HBase</p>
+<p>适用场景：</p>
+<ol>
+<li><p>日志：可以将数据储存在不同的列中，每个应用程序能够将信息写入自己的列族中。</p>
+</li>
+<li><p>博客平台：储存每个信息到不同的列族中，举个例子，标签可以储存在一个列族，类别、文章也可以分别存储在不同的列族。</p>
+</li>
+</ol>
+<h3 id="时序数据库："><a href="#时序数据库：" class="headerlink" title="时序数据库："></a>时序数据库：</h3><p>时序数据库就是存放时序数据的数据库，它需要支持时序数据的快速写入、持久化、多纬度的聚合查询等基本功能。对比传统数据库仅仅记录了数据的当前值，时序数据库记录了所有的历史数据。它的查询也总是会带上时间作为过滤条件，数据以时间流的方式存在，每条记录包括时间戳。可以更加高效快速的存储大量时间序列数据并对这些数据进行实时分析。</p>
+<p>代表产品：Prometheus、InfluxDB和OpenTSDB</p>
+<p>适用场景：IoT传感器时序数据分析；证券及加密货币交易数据；软硬件设备实时监控；都市环保数据采集等等。</p>
+<h3 id="图数据库："><a href="#图数据库：" class="headerlink" title="图数据库："></a>图数据库：</h3><p>数据以图的方式储存。实体会被作为顶点，而实体之间的关系则会被作为边。比如我们有三个实体，Steve Jobs、Apple和Next，则会有两个“Founded by”的边将Apple和Next连接到Steve Jobs。</p>
+<p>代表产品：Neo4J、Infinite Graph、OrientDB</p>
+<p>适用场景：</p>
+<ol>
+<li><p>在一些关系性强的数据中，用于构建关系图谱，例如社交网络。</p>
+</li>
+<li><p>推荐引擎。如果我们将数据以图的形式表现，会非常有益于推荐的制定。</p>
+</li>
+</ol>
+<p>注：</p>
+<p>举个简单例子，如果你的业务有大量的结构化数据且存在许多事务性操作，那首选肯定就是MySQL这样的数据库。</p>
+<p>如果你的业务经常有突发的流量高峰，则优先考虑适用MongoDB这样的非关系型数据库，有比较好的扩展性。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/19/nginx/">
+                        <span class="hidden-mobile">nginx</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="gitalk-container"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#gitalk-container', function() {
+      Fluid.utils.createCssLink('/css/gitalk.css')
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', function() {
+        var options = Object.assign(
+          {"clientID":"b16668cc9d04436fdef6","clientSecret":"1434260335b2b38f8223d5cfc69a22504e475468","repo":"gitalk","owner":"HectorJiang","admin":["HectorJiang"],"language":"en","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
+          {
+            id: '8176b12a3c1dfcef738cb7f6cc9db5a4'
+          }
+        )
+        var gitalk = new Gitalk(options);
+        gitalk.render('gitalk-container');
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+  <div class="col-lg-7 mx-auto nopadding-x-md">
+    <div class="container custom post-custom mx-auto">
+      <img src="https://octodex.github.com/images/jetpacktocat.png" srcset="/img/loading.gif" lazyload class="rounded mx-auto d-block mt-5" style="width:150px; height:150px;">
+    </div>
+  </div>
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
