@@ -13,20 +13,20 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="John Doe">
+  <meta name="author" content="Hector Jiang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="操作系统 Linux命令以及原理 Linux shell awd sed    Linux的进程、线程、文件描述符是什么Linux目录【Linux与Windows默认目录匹对】 &#x2F;usr → C:&#x2F;Windows&#x2F; &#x2F;*系统级的目录 &#x2F;usr&#x2F;lib → C:&#x2F;Windows&#x2F;System32 &#x2F;usr&amp;#x">
+    <meta name="description" content="123操作系统Linux命令以及原理Linux shell awd sed    Linux的进程、线程、文件描述符是什么Linux目录12345678910111213141516171819202122232425262728293031323334353637383940【Linux与Windows默认目录匹对】&#x2F;usr → C:&#x2F;Windows&#x2F; &#x2F;*系统级的目录&#x2F;usr&#x2F;lib → C:">
 <meta property="og:type" content="article">
 <meta property="og:title" content="test">
 <meta property="og:url" content="http://example.com/2023/01/29/test/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="操作系统 Linux命令以及原理 Linux shell awd sed    Linux的进程、线程、文件描述符是什么Linux目录【Linux与Windows默认目录匹对】 &#x2F;usr → C:&#x2F;Windows&#x2F; &#x2F;*系统级的目录 &#x2F;usr&#x2F;lib → C:&#x2F;Windows&#x2F;System32 &#x2F;usr&amp;#x">
+<meta property="og:site_name" content="快去学习">
+<meta property="og:description" content="123操作系统Linux命令以及原理Linux shell awd sed    Linux的进程、线程、文件描述符是什么Linux目录12345678910111213141516171819202122232425262728293031323334353637383940【Linux与Windows默认目录匹对】&#x2F;usr → C:&#x2F;Windows&#x2F; &#x2F;*系统级的目录&#x2F;usr&#x2F;lib → C:">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200517152733260.png#pic_center">
 <meta property="article:published_time" content="2023-01-29T14:33:15.000Z">
 <meta property="article:modified_time" content="2023-01-29T15:38:30.299Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:author" content="Hector Jiang">
 <meta property="article:tag" content="linux  mysql">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/20200517152733260.png#pic_center">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>test - Hexo</title>
+  <title>test - 快去学习</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -44,8 +44,6 @@
   <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" />
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
 
@@ -226,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          6.5k 字
+          6.1k 字
         
       </span>
     
@@ -237,7 +235,7 @@
         
         
         
-          55 分钟
+          51 分钟
         
       </span>
     
@@ -288,231 +286,40 @@
             
               <div class="markdown-body">
                 
-                <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">操作系统
-Linux命令以及原理
-Linux shell awd sed<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+                <figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">操作系统<br>Linux命令以及原理<br>Linux <span class="hljs-keyword">shell</span><span class="language-bash"> awd sed</span><br></code></pre></td></tr></table></figure>
 
 
 
-<h2 id="Linux的进程、线程、文件描述符是什么"><a href="#Linux的进程、线程、文件描述符是什么" class="headerlink" title="Linux的进程、线程、文件描述符是什么"></a>Linux的进程、线程、文件描述符是什么</h2><h2 id="Linux目录"><a href="#Linux目录" class="headerlink" title="Linux目录"></a>Linux目录</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">【Linux与Windows默认目录匹对】
-&#x2F;usr → C:&#x2F;Windows&#x2F; &#x2F;*系统级的目录
-&#x2F;usr&#x2F;lib → C:&#x2F;Windows&#x2F;System32
-&#x2F;usr&#x2F;local → C:&#x2F;Progrem Files&#x2F; &#x2F;*用户级的程序目录，用户自己编译的软件默认会安装到这个目录下
-&#x2F;opt → D:&#x2F;Software &#x2F;*用户级的程序目录, opt有可选的意思，即自定义路径，当你不需要时，直接 rm -rf 掉即可。在硬盘容量不够时，也可将 &#x2F;opt 单独挂载到其他磁盘上使用。
-
-【源码存放位置】
-&#x2F;usr&#x2F;src &#x2F;*系统级的源码目录。
-&#x2F;usr&#x2F;local&#x2F;src &#x2F;*用户级的源码目录。
-
-【目录解释】
-&#x2F;opt
-这里主要存放那些可选的程序装到&#x2F;opt目录下，这样，当你尝试完，想删掉软件程序的时候，你就可 以直接删除它，而不影响系统其他任何设置。安装到&#x2F;opt目录下的程序，它所有的数据、库文件等等都是放在同个目录下面。
-&#x2F;usr&#x2F;local
-它和&#x2F;usr目录具有相类似的目录结构。让软件包管理器来管理&#x2F;usr目录，而把自定义的脚本(scripts)放到&#x2F;usr&#x2F;local目录下面。
-
-【常用目录及用途】
-&#x2F;bin 存放二进制可执行文件（ls,cat,mkdir等），常用命令一般都在这里。
-&#x2F;etc 存放系统管理和配置文件
-&#x2F;home 存放所有用户文件的根目录，是用户主目录的基点，比如用户user的主目录就是&#x2F;home&#x2F;user，可以用~user表示
-&#x2F;usr 用于存放系统应用程序，比较重要的目录&#x2F;usr&#x2F;local 本地系统管理员软件安装目录（安装系统级的应用）。这是最庞大的目录，要用到的应用程序和文件几乎都在这个目录。
-&#x2F;usr&#x2F;bin 众多的应用程序
-&#x2F;usr&#x2F;sbin 超级用户的一些管理程序
-&#x2F;usr&#x2F;doc linux文档
-&#x2F;usr&#x2F;include linux下开发和编译应用程序所需要的头文件
-&#x2F;usr&#x2F;lib 常用的动态链接库和软件包的配置文件
-&#x2F;usr&#x2F;man 帮助文档
-&#x2F;usr&#x2F;src 源代码，linux内核的源代码就放在&#x2F;usr&#x2F;src&#x2F;linux里
-&#x2F;usr&#x2F;local&#x2F;bin 本地增加的命令
-&#x2F;usr&#x2F;local&#x2F;lib 本地增加的库
-&#x2F;opt 额外安装的可选应用程序包所放置的位置。一般情况下，我们可以把tomcat等都安装到这里。
-&#x2F;proc 虚拟文件系统目录，是系统内存的映射。可直接访问这个目录来获取系统信息。
-&#x2F;root 超级用户（系统管理员）的主目录（特权阶级^o^）
-&#x2F;sbin 存放二进制可执行文件，只有root才能访问。这里存放的是系统管理员使用的系统级别的管理命令和程序。如ifconfig等。
-&#x2F;dev 用于存放设备文件。
-&#x2F;mnt 系统管理员安装临时文件系统的安装点，系统提供这个目录是让用户临时挂载其他的文件系统。
-&#x2F;boot 存放用于系统引导时使用的各种文件
-&#x2F;lib 存放跟文件系统中的程序运行所需要的共享库及内核模块。共享库又叫动态链接共享库，作用类似windows里的.dll文件，存放了根文件系统程序运行所需的共享文件。
-&#x2F;tmp 用于存放各种临时文件，是公用的临时文件存储点。
-&#x2F;var 用于存放运行时需要改变数据的文件，也是某些大文件的溢出区，比方说各种服务的日志文件（系统启动日志等。）等。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h2 id="Linux的进程、线程、文件描述符是什么"><a href="#Linux的进程、线程、文件描述符是什么" class="headerlink" title="Linux的进程、线程、文件描述符是什么"></a>Linux的进程、线程、文件描述符是什么</h2><h2 id="Linux目录"><a href="#Linux目录" class="headerlink" title="Linux目录"></a>Linux目录</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs awk">【Linux与Windows默认目录匹对】<br><span class="hljs-regexp">/usr → C:/</span>Windows<span class="hljs-regexp">/ /</span>*系统级的目录<br><span class="hljs-regexp">/usr/</span>lib → C:<span class="hljs-regexp">/Windows/</span>System32<br><span class="hljs-regexp">/usr/</span>local → C:<span class="hljs-regexp">/Progrem Files/</span> /*用户级的程序目录，用户自己编译的软件默认会安装到这个目录下<br><span class="hljs-regexp">/opt → D:/</span>Software <span class="hljs-regexp">/*用户级的程序目录, opt有可选的意思，即自定义路径，当你不需要时，直接 rm -rf 掉即可。在硬盘容量不够时，也可将 /</span>opt 单独挂载到其他磁盘上使用。<br><br>【源码存放位置】<br><span class="hljs-regexp">/usr/</span>src /*系统级的源码目录。<br><span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/src /</span>*用户级的源码目录。<br><br>【目录解释】<br>/opt<br>这里主要存放那些可选的程序装到<span class="hljs-regexp">/opt目录下，这样，当你尝试完，想删掉软件程序的时候，你就可 以直接删除它，而不影响系统其他任何设置。安装到/</span>opt目录下的程序，它所有的数据、库文件等等都是放在同个目录下面。<br><span class="hljs-regexp">/usr/</span>local<br>它和<span class="hljs-regexp">/usr目录具有相类似的目录结构。让软件包管理器来管理/u</span>sr目录，而把自定义的脚本(scripts)放到<span class="hljs-regexp">/usr/</span>local目录下面。<br><br>【常用目录及用途】<br>/bin 存放二进制可执行文件（ls,cat,mkdir等），常用命令一般都在这里。<br>/etc 存放系统管理和配置文件<br><span class="hljs-regexp">/home 存放所有用户文件的根目录，是用户主目录的基点，比如用户user的主目录就是/</span>home/user，可以用~user表示<br><span class="hljs-regexp">/usr 用于存放系统应用程序，比较重要的目录/u</span>sr/local 本地系统管理员软件安装目录（安装系统级的应用）。这是最庞大的目录，要用到的应用程序和文件几乎都在这个目录。<br><span class="hljs-regexp">/usr/</span>bin 众多的应用程序<br><span class="hljs-regexp">/usr/</span>sbin 超级用户的一些管理程序<br><span class="hljs-regexp">/usr/</span>doc linux文档<br><span class="hljs-regexp">/usr/i</span>nclude linux下开发和编译应用程序所需要的头文件<br><span class="hljs-regexp">/usr/</span>lib 常用的动态链接库和软件包的配置文件<br><span class="hljs-regexp">/usr/m</span>an 帮助文档<br><span class="hljs-regexp">/usr/</span>src 源代码，linux内核的源代码就放在<span class="hljs-regexp">/usr/</span>src/linux里<br><span class="hljs-regexp">/usr/</span>local/bin 本地增加的命令<br><span class="hljs-regexp">/usr/</span>local/lib 本地增加的库<br>/opt 额外安装的可选应用程序包所放置的位置。一般情况下，我们可以把tomcat等都安装到这里。<br>/proc 虚拟文件系统目录，是系统内存的映射。可直接访问这个目录来获取系统信息。<br>/root 超级用户（系统管理员）的主目录（特权阶级^o^）<br>/sbin 存放二进制可执行文件，只有root才能访问。这里存放的是系统管理员使用的系统级别的管理命令和程序。如ifconfig等。<br>/dev 用于存放设备文件。<br>/mnt 系统管理员安装临时文件系统的安装点，系统提供这个目录是让用户临时挂载其他的文件系统。<br>/boot 存放用于系统引导时使用的各种文件<br>/lib 存放跟文件系统中的程序运行所需要的共享库及内核模块。共享库又叫动态链接共享库，作用类似windows里的.dll文件，存放了根文件系统程序运行所需的共享文件。<br>/tmp 用于存放各种临时文件，是公用的临时文件存储点。<br>/var 用于存放运行时需要改变数据的文件，也是某些大文件的溢出区，比方说各种服务的日志文件（系统启动日志等。）等。<br></code></pre></td></tr></table></figure>
 
 
 
-<h2 id="Ubuntu软件源"><a href="#Ubuntu软件源" class="headerlink" title="Ubuntu软件源"></a>Ubuntu软件源</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">修改软件源
-# 首先备份源列表
-sudo cp &#x2F;etc&#x2F;apt&#x2F;sources.list &#x2F;etc&#x2F;apt&#x2F;sources.list_backup
-
-编辑&#x2F;etc&#x2F;apt&#x2F;sources.list文件, 在文件最前面添加阿里云镜像源：
-
-#  阿里源
-deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic main restricted universe multiverse
-deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic-security main restricted universe multiverse
-deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic-updates main restricted universe multiverse
-deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic-proposed main restricted universe multiverse
-deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic-backports main restricted universe multiverse
-deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic main restricted universe multiverse
-deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic-security main restricted universe multiverse
-deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic-updates main restricted universe multiverse
-deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic-proposed main restricted universe multiverse
-deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; bionic-backports main restricted universe multive
-
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install build-essential&#x2F;&#x2F;这一步什么意思
+<h2 id="Ubuntu软件源"><a href="#Ubuntu软件源" class="headerlink" title="Ubuntu软件源"></a>Ubuntu软件源</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs awk">修改软件源<br><span class="hljs-comment"># 首先备份源列表</span><br>sudo cp <span class="hljs-regexp">/etc/</span>apt<span class="hljs-regexp">/sources.list /</span>etc<span class="hljs-regexp">/apt/</span>sources.list_backup<br><br>编辑<span class="hljs-regexp">/etc/</span>apt/sources.list文件, 在文件最前面添加阿里云镜像源：<br><br><span class="hljs-comment">#  阿里源</span><br>deb http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic main restricted universe multiverse<br>deb http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic-security main restricted universe multiverse<br>deb http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic-updates main restricted universe multiverse<br>deb http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic-proposed main restricted universe multiverse<br>deb http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic-backports main restricted universe multiverse<br>deb-src http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic main restricted universe multiverse<br>deb-src http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic-security main restricted universe multiverse<br>deb-src http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic-updates main restricted universe multiverse<br>deb-src http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic-proposed main restricted universe multiverse<br>deb-src http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/ubuntu/</span> bionic-backports main restricted universe multive<br><br>sudo apt-get update<br>sudo apt-get upgrade<br>sudo apt-get install build-essential<span class="hljs-regexp">//</span>这一步什么意思<br><br><br><br>修改环境变量<br>vim <span class="hljs-regexp">/etc/</span>profile<br><br>修改主机名<br>vim <span class="hljs-regexp">/etc/</span>hostname<br><br>目录结构<br></code></pre></td></tr></table></figure>
 
 
 
-修改环境变量
-vim &#x2F;etc&#x2F;profile
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">find</span>用于查找文件<br><span class="hljs-keyword">grep</span>用于查找文件中文本<br><br></code></pre></td></tr></table></figure>
 
-修改主机名
-vim &#x2F;etc&#x2F;hostname
-
-目录结构<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile">一个<span class="hljs-keyword">shell</span><span class="language-bash">必备的内容：</span><br>sed awd<br>日志<br></code></pre></td></tr></table></figure>
 
 
 
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">find用于查找文件
-grep用于查找文件中文本
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
+<h2 id="vim操作"><a href="#vim操作" class="headerlink" title="vim操作"></a>vim操作</h2><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><code class="hljs excel">删除全部内容：ggdG<br><br>删除到行尾内容：D<br>剪切到行尾内容：dd<br>复制一行：yy<br>粘贴到光标前：P<br>粘贴到光标后：p<br><br>光标前插入字符：i<br>光标后插入字符：a<br>当前行上插入一空行：O<br>当前行下插入一空行：o<br><br>撤销：u<br>重做：ctrl+r<br><br><br>第一行：gg<br>最后一行：G<br>到第X行：XG<br>到第X行：<span class="hljs-symbol">:X</span><br>到句首：（<br>到句尾：）<br>到段首：&#123;<br>到段尾：&#125;<br><br>向上滚屏：ctrl+y<br>向下滚屏：ctrl+e<br><br><br>/，<span class="hljs-built_in">n</span>向下搜索，<span class="hljs-built_in">N</span>向上搜索（<span class="hljs-built_in">N</span>是反向）<br>？，<span class="hljs-built_in">n</span>向上搜索，<span class="hljs-built_in">N</span>向下搜索（<span class="hljs-built_in">N</span>是反向）<br>直接输入即可，也可输入：在输入/或者？<br><br>可视模式：<br>左下上右：ghjkf<br><br>保存：w<br>退出：q<br>保存退出：wq/ZZ<br>不保存退出：q!/ZQ/!q是错的<br>另存为：w filename<br><br><br>退出编译模式：esc,ctrl c,ctrl [<br><br><br><br>列多选<span class="hljs-symbol">:ct</span>rl+v<br>r替换<br>可以使用G选中到末尾，或者使用hjkl选中多行<br><br><br><br><br>vim与emacs：需要用到的时候才学习其他<br>vim-plus插件管理<br>d删除<br></code></pre></td></tr></table></figure>
 
-<h2 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">一个shell必备的内容：
-sed awd
-日志<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
-
-
-
-<h2 id="vim操作"><a href="#vim操作" class="headerlink" title="vim操作"></a>vim操作</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">删除全部内容：ggdG
-
-删除到行尾内容：D
-剪切到行尾内容：dd
-复制一行：yy
-粘贴到光标前：P
-粘贴到光标后：p
-
-光标前插入字符：i
-光标后插入字符：a
-当前行上插入一空行：O
-当前行下插入一空行：o
-
-撤销：u
-重做：ctrl+r
-
-
-第一行：gg
-最后一行：G
-到第X行：XG
-到第X行：:X
-到句首：（
-到句尾：）
-到段首：&#123;
-到段尾：&#125;
-
-向上滚屏：ctrl+y
-向下滚屏：ctrl+e
-
-
-&#x2F;，n向下搜索，N向上搜索（N是反向）
-？，n向上搜索，N向下搜索（N是反向）
-直接输入即可，也可输入：在输入&#x2F;或者？
-
-可视模式：
-左下上右：ghjkf
-
-保存：w
-退出：q
-保存退出：wq&#x2F;ZZ
-不保存退出：q!&#x2F;ZQ&#x2F;!q是错的
-另存为：w filename
-
-
-退出编译模式：esc,ctrl c,ctrl [
-
-
-
-列多选:ctrl+v
-r替换
-可以使用G选中到末尾，或者使用hjkl选中多行
-
-
-
-
-vim与emacs：需要用到的时候才学习其他
-vim-plus插件管理
-d删除<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-
-<h2 id="vim使用普通用户，保存root权限文件"><a href="#vim使用普通用户，保存root权限文件" class="headerlink" title="vim使用普通用户，保存root权限文件"></a>vim使用普通用户，保存root权限文件</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">:w !sudo tee %
-这条命令的含义是把当前编辑的文件的内容当做标准输入输入到命令 sudo tee 文件名 里去
-vim 命令:w !&#123;cmd&#125;，让vim执行一个外部命令 &#123;cmd&#125;，然后把当前缓冲区的内容从 stdin 传入外部命令&#123;cmd&#125;。
-外部命令就是一个 Linux 的 shell 命令
-Linux tee 命令用于读取标准输入的数据，并将其内容 输出成文件 和 标准输出。
-% 代表当前缓冲区
-类似一个 Linux 管道 : stdin | tee file
-
-1.:w ! ------------------------ 缓冲区 -&gt; stdin
-2.sudo tee % ------------ stdin -&gt; 当前缓冲区
-
-tee 指令会从标准输入 ( stdin 也就是 0 ) 设备读取数据，将其内容输出到标准输出 ( stdout 也就是 1) 设备，同时保存成文件。
-语法：tee [-ai][--help][--version][文件...]
--a 或 --append 　附加到既有文件的后面，而非覆盖它．
--i 或 --ignore-interrupts 　忽略中断信号。
-–help 　在线帮助。
-–version 　显示版本信息。
-
-使用指令 “tee” 将用户输入的数据同时保存到文件 “file1” 和 “file2” 中，输入如下命令：
-tee file1 file2
-
-
-
-
-缓冲区（Buffer）是一块内存区域，用于存储着正在编辑的文件。在保存缓冲区并退出时，内容也随之被写回原始文件。
-:buffers 或 :ls 或 :files 显示缓冲区列表。
-第一列：缓冲区编号， 可以在编辑该文件时以此代替文件名。
-第二列：缓冲区类型标志字符。
-第三列：文件名，从缓冲区写入到的文件的文件名。内存 &#x3D;&gt; 磁盘。
-第四列：上次退出或切换缓冲区时光标所在的行号.
-
-  % 当前缓冲区
-  
-  #：上一次的活动缓冲区
-  
-  l： 被载入并显示在某窗口中的缓冲区
-  
-  h ：被载入但隐藏的缓冲区.
-  
-  &#x3D; ：只读的缓冲区
-  
-  \- ：不可编辑的缓冲区, 其中°modifiable°选项被关闭
-  
-  \+ ：有改动的缓冲区
-  缓冲区的操作：<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h2 id="vim使用普通用户，保存root权限文件"><a href="#vim使用普通用户，保存root权限文件" class="headerlink" title="vim使用普通用户，保存root权限文件"></a>vim使用普通用户，保存root权限文件</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs vim">:<span class="hljs-keyword">w</span> !sudo tee %<br>这条命令的含义是把当前编辑的文件的内容当做标准输入输入到命令 sudo tee 文件名 里去<br><span class="hljs-keyword">vim</span> 命令:<span class="hljs-keyword">w</span> !&#123;cmd&#125;，让<span class="hljs-keyword">vim</span>执行一个外部命令 &#123;cmd&#125;，然后把当前缓冲区的内容从 stdin 传入外部命令&#123;cmd&#125;。<br>外部命令就是一个 Linux 的 <span class="hljs-keyword">shell</span> 命令<br>Linux tee 命令用于读取标准输入的数据，并将其内容 输出成文件 和 标准输出。<br>% 代表当前缓冲区<br>类似一个 Linux 管道 : stdin | tee <span class="hljs-keyword">file</span><br><br><span class="hljs-number">1</span>.:<span class="hljs-keyword">w</span> ! ------------------------ 缓冲区 -&gt; stdin<br><span class="hljs-number">2</span>.sudo tee % ------------ stdin -&gt; 当前缓冲区<br><br>tee 指令会从标准输入 ( stdin 也就是 <span class="hljs-number">0</span> ) 设备读取数据，将其内容输出到标准输出 ( stdout 也就是 <span class="hljs-number">1</span>) 设备，同时保存成文件。<br>语法：tee [-ai][--<span class="hljs-keyword">help</span>][--<span class="hljs-keyword">version</span>][文件...]<br>-<span class="hljs-keyword">a</span> 或 --<span class="hljs-keyword">append</span> 　附加到既有文件的后面，而非覆盖它．<br>-i 或 --ignore-interrupts 　忽略中断信号。<br>–<span class="hljs-keyword">help</span> 　在线帮助。<br>–<span class="hljs-keyword">version</span> 　显示版本信息。<br><br>使用指令 “tee” 将用户输入的数据同时保存到文件 “file1” 和 “file2” 中，输入如下命令：<br>tee file1 file2<br><br><br><br><br>缓冲区（Buffer）是一块内存区域，用于存储着正在编辑的文件。在保存缓冲区并退出时，内容也随之被写回原始文件。<br>:<span class="hljs-keyword">buffers</span> 或 :<span class="hljs-keyword">ls</span> 或 :<span class="hljs-keyword">files</span> 显示缓冲区列表。<br>第一列：缓冲区编号， 可以在编辑该文件时以此代替文件名。<br>第二列：缓冲区类型标志字符。<br>第三列：文件名，从缓冲区写入到的文件的文件名。内存 =&gt; 磁盘。<br>第四列：上次退出或切换缓冲区时光标所在的行号.<br><br>  % 当前缓冲区<br>  <br>  #：上一次的活动缓冲区<br>  <br>  <span class="hljs-keyword">l</span>： 被载入并显示在某窗口中的缓冲区<br>  <br>  h ：被载入但隐藏的缓冲区.<br>  <br>  = ：只读的缓冲区<br>  <br>  \- ：不可编辑的缓冲区, 其中°modifiable°选项被关闭<br>  <br>  \+ ：有改动的缓冲区<br>  缓冲区的操作：<br></code></pre></td></tr></table></figure>
 
 <p><img src="https://img-blog.csdnimg.cn/20200517152733260.png#pic_center" srcset="/img/loading.gif" lazyload alt="缓冲区的操作"></p>
-<h2 id="GDB调试"><a href="#GDB调试" class="headerlink" title="GDB调试"></a>GDB调试</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h2 id="GDB调试"><a href="#GDB调试" class="headerlink" title="GDB调试"></a>GDB调试</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
 
-<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">awk &#39;&#123;print&#125;&#39; test.cpp
-awk &#39;&#123;print $1&#125;&#39; test.cpp
-awk &#39;&#123;print $1&quot;\t&quot;$2&quot;\t&quot;$3&#125;&#39; test.cpp
-awk &#39;&#123;print NR&quot;\t&quot;$1&quot;\t&quot;$2&quot;\t&quot;$3&#125;&#39; test.cpp   (NR&#x3D;number of record)
-awk认为逗号是系统默认分隔符是空格，直接使用空格把两个连接起来了
-awk &#39;&#123;print NR&quot;\t&quot;$0&#125;&#39; test.cpp   ($0一整行）
-awk &#39;&#123;print NF &quot;\t&quot; $0&#125;&#39; test.cpp (NF每一行有多少列 Number of field)
-awk &#39;$1&#x3D;&#x3D;&quot;gold&quot;&#123;print $0&#125;&#39; test.cpp
-awk &#39;$3&#x3D;1986&#123;print $0&#125;&#39; test.cpp
-awk &#39;NR&#x3D;&#x3D;7&#123;print NR, $0&#125;&#39; test.cpp
-awk &#39;NF&#x3D;&#x3D;7&#123;print $0&#125;&#39; test.cpp
-awk &#39;&#123;print $1 $2&#125;&#39; 从屏幕读取数据
-awk &#39;BEGIN&#123;FS&#x3D;&quot;,&quot;&#125;&#123;print $1,$2&#125;&#39;
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs swift">awk &#x27;&#123;print&#125;&#x27; test.cpp<br>awk &#x27;&#123;print <span class="hljs-variable">$1</span>&#125;&#x27; test.cpp<br>awk &#x27;&#123;print <span class="hljs-variable">$1</span><span class="hljs-string">&quot;<span class="hljs-subst">\t</span>&quot;</span><span class="hljs-variable">$2</span><span class="hljs-string">&quot;<span class="hljs-subst">\t</span>&quot;</span><span class="hljs-variable">$3</span>&#125;&#x27; test.cpp<br>awk &#x27;&#123;print <span class="hljs-type">NR</span><span class="hljs-string">&quot;<span class="hljs-subst">\t</span>&quot;</span><span class="hljs-variable">$1</span><span class="hljs-string">&quot;<span class="hljs-subst">\t</span>&quot;</span><span class="hljs-variable">$2</span><span class="hljs-string">&quot;<span class="hljs-subst">\t</span>&quot;</span><span class="hljs-variable">$3</span>&#125;&#x27; test.cpp   (<span class="hljs-type">NR</span><span class="hljs-operator">=</span>number of record)<br>awk认为逗号是系统默认分隔符是空格，直接使用空格把两个连接起来了<br>awk &#x27;&#123;print <span class="hljs-type">NR</span><span class="hljs-string">&quot;<span class="hljs-subst">\t</span>&quot;</span><span class="hljs-variable">$0</span>&#125;&#x27; test.cpp   (<span class="hljs-variable">$0</span>一整行）<br>awk &#x27;&#123;print <span class="hljs-type">NF</span> <span class="hljs-string">&quot;<span class="hljs-subst">\t</span>&quot;</span> <span class="hljs-variable">$0</span>&#125;&#x27; test.cpp (<span class="hljs-type">NF每一行有多少列</span> <span class="hljs-type">Number</span> of field)<br>awk &#x27;<span class="hljs-variable">$1</span><span class="hljs-operator">==</span><span class="hljs-string">&quot;gold&quot;</span>&#123;print <span class="hljs-variable">$0</span>&#125;&#x27; test.cpp<br>awk &#x27;<span class="hljs-variable">$3</span><span class="hljs-operator">=</span><span class="hljs-number">1986</span>&#123;print <span class="hljs-variable">$0</span>&#125;&#x27; test.cpp<br>awk &#x27;<span class="hljs-type">NR</span><span class="hljs-operator">==</span><span class="hljs-number">7</span>&#123;print <span class="hljs-type">NR</span>, <span class="hljs-variable">$0</span>&#125;&#x27; test.cpp<br>awk &#x27;<span class="hljs-type">NF</span><span class="hljs-operator">==</span><span class="hljs-number">7</span>&#123;print <span class="hljs-variable">$0</span>&#125;&#x27; test.cpp<br>awk &#x27;&#123;print <span class="hljs-variable">$1</span> <span class="hljs-variable">$2</span>&#125;&#x27; 从屏幕读取数据<br>awk &#x27;<span class="hljs-type">BEGIN</span>&#123;<span class="hljs-type">FS</span><span class="hljs-operator">=</span><span class="hljs-string">&quot;,&quot;</span>&#125;&#123;print <span class="hljs-variable">$1</span>,<span class="hljs-variable">$2</span>&#125;&#x27;<br><br></code></pre></td></tr></table></figure>
 
 
 
-<h2 id="Git命令"><a href="#Git命令" class="headerlink" title="Git命令"></a>Git命令</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
+<h2 id="Git命令"><a href="#Git命令" class="headerlink" title="Git命令"></a>Git命令</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure>
 
 
 
-<h2 id="Linux用户"><a href="#Linux用户" class="headerlink" title="Linux用户"></a>Linux用户</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">&#x2F;etc&#x2F;passwd
-&#x2F;etc&#x2F;group
-&#x2F;etc&#x2F;shadow	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure>
+<h2 id="Linux用户"><a href="#Linux用户" class="headerlink" title="Linux用户"></a>Linux用户</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/etc/</span>passwd<br><span class="hljs-regexp">/etc/g</span>roup<br><span class="hljs-regexp">/etc/</span>shadow	<br></code></pre></td></tr></table></figure>
 
 
 
@@ -628,12 +435,7 @@ awk &#39;BEGIN&#123;FS&#x3D;&quot;,&quot;&#125;&#123;print $1,$2&#125;&#39;
 <p>C++中插入汇编代码，asm</p>
 <p>不同语言之间互相调用代码</p>
 <p>编程语言架构研究，比如jvm,.net</p>
-<h2 id="man和info-help"><a href="#man和info-help" class="headerlink" title="man和info,help"></a>man和info,help</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">通过type查看命令是内置还是外部
-help只能用于内置：help cd
-外部命令：cmd --help
-
-man没有内建和外部命令的区别
-info得到的信息比man还要多，来自GNU项目，和man是两个集合，有交集，若 man 页包含的某个工具的概要信息在 info 中也有介绍，那么 man 页中会有“请参考 info 页更详细内容”的字样。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<h2 id="man和info-help"><a href="#man和info-help" class="headerlink" title="man和info,help"></a>man和info,help</h2><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs stata">通过<span class="hljs-keyword">type</span>查看命令是内置还是外部<br><span class="hljs-keyword">help</span>只能用于内置：<span class="hljs-keyword">help</span> <span class="hljs-keyword">cd</span><br>外部命令：cmd --<span class="hljs-keyword">help</span><br><br><span class="hljs-keyword">man</span>没有内建和外部命令的区别<br>info得到的信息比<span class="hljs-keyword">man</span>还要多，来自GNU项目，和<span class="hljs-keyword">man</span>是两个集合，有交集，若 <span class="hljs-keyword">man</span> 页包含的某个工具的概要信息在 info 中也有介绍，那么 <span class="hljs-keyword">man</span> 页中会有“请参考 info 页更详细内容”的字样。<br></code></pre></td></tr></table></figure>
 
 
 
@@ -668,7 +470,7 @@ info得到的信息比man还要多，来自GNU项目，和man是两个集合，�
       
         <div class="license-meta-item">
           <div>作者</div>
-          <div>John Doe</div>
+          <div>Hector Jiang</div>
         </div>
       
       
@@ -705,6 +507,12 @@ info得到的信息比man还要多，来自GNU项目，和man是两个集合，�
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/01/30/todo/" title="todo">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">todo</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
@@ -908,8 +716,6 @@ info得到的信息比man还要多，来自GNU项目，和man是两个集合，�
   });
 </script>
 
-
-  <script  src="https://lib.baomitu.com/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" ></script>
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
 
